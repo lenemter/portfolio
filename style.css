@@ -1,0 +1,247 @@
+:root {
+    --orange-100: #ff9e00;
+    --orange-300: #ff9100;
+    --orange-500: #ff8500;
+    --orange-700: #ff7900;
+    --orange-900: #ff6d00;
+
+    --purple-100: #9d4edd;
+    --purple-300: #7b2cbf;
+    --purple-500: #5a189a;
+    --purple-700: #3c096c;
+    --purple-900: #240046;
+
+    --grey-100: #eeeeee;
+    --grey-300: #dddddd;
+    --grey-500: #cccccc;
+    --grey-700: #bbbbbb;
+    --grey-900: #333333;
+
+    /* Can be overwritten with dark style */
+    --body-background-color: color-mix(in srgb, white 95%, var(--orange-100) 5%);
+    --header-background-color: color-mix(in srgb, var(--grey-100) 80%, var(--orange-900) 20%);
+    --header-border-color: color-mix(in srgb, var(--grey-300) 85%, var(--orange-700) 15%);
+    --text-primary-color: var(--grey-900);
+    --text-secondary-color: #555555;
+    --github-logo-color: #1a1f25;
+    --footer-border-color: var(--grey-900);
+    --links-hover-color: color-mix(in srgb, var(--text-primary-color) 10%, var(--orange-900) 90%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --body-background-color: color-mix(in srgb, #222222 95%, var(--purple-100) 5%);
+        --header-background-color: color-mix(in srgb, #444444 85%, var(--purple-700) 15%);
+        --header-border-color: color-mix(in srgb, #333333 85%, var(--purple-700) 15%);
+        --text-primary-color: #f0f0f0;
+        --text-secondary-color: #bbbbbb;
+        --github-logo-color: #FAFBFC;
+        --footer-border-color: var(--grey-100);
+        --links-hover-color: color-mix(in srgb, var(--text-primary-color) 30%, var(--purple-100) 70%);
+    }
+}
+
+* {
+    box-sizing: border-box;
+
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background-color: var(--body-background-color);
+    color: var(--text-primary-color);
+}
+
+a {
+    color: inherit;
+
+    transition: color 100ms ease-in-out;
+}
+
+a:hover {
+    color: var(--links-hover-color);
+}
+
+a.no-underline {
+    text-decoration: none;
+}
+
+.dimmed {
+    color: var(--text-secondary-color);
+}
+
+h1 {
+    font-weight: 900;
+}
+
+h2 {
+    font-weight: 800;
+}
+
+h2.top-margin {
+    margin-top: 2rem;
+}
+
+header {
+    background-color: var(--header-background-color);
+    border-bottom: var(--header-border-color) 1px solid;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+}
+
+.navbar li {
+    padding: 1rem 1.75rem;
+}
+
+main,
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 3rem 0 1rem 0;
+}
+
+.container {
+    width: min(100%, 800px);
+    padding: 0 1rem;
+}
+
+.main-info {
+    display: flex;
+}
+
+.main-info__left {
+    order: 1;
+}
+
+.main-info__right {
+    order: 2;
+
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+p {
+    margin: 1.25rem 0;
+}
+
+.pfp {
+    max-width: 100%;
+    max-height: 100%;
+
+    border: var(--header-border-color) 1px solid;
+    border-radius: 9999px;
+}
+
+.social-media-container {
+    display: flex;
+    column-gap: 1.2rem;
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+svg.github {
+    fill: var(--github-logo-color);
+}
+
+svg.mastodon {
+    fill: #6364ff;
+}
+
+svg.boosty {
+    fill: #f15f2c;
+}
+
+.year {
+    font-size: 0.875rem;
+    font-weight: 600;
+    /* margin-left: 1rem; */
+}
+
+ul.dash {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+}
+
+ul.dash > li:before {
+    display: inline-block;
+    content: "-";
+    width: 1em;
+    margin-left: -1em;
+}
+
+footer {
+    margin: 0;
+}
+
+footer .container {
+    border-top: var(--footer-border-color) 1px solid;
+}
+
+.contact-list {
+    display: flex;
+    justify-content: start;
+    gap: 1rem 2rem;
+    margin: 0;
+    padding: 1.5rem 0;
+
+    list-style-type: none;
+}
+
+.contact-list__label {
+    margin: 0;
+}
+
+/* Media queries  */
+@media screen and (max-width: 800px) {
+    .main-info {
+        flex-direction: column;
+    }
+
+    .main-info__left {
+        order: 2;
+    }
+
+    .main-info__right {
+        order: 1;
+
+        width: 200px;
+        height: 200px;
+    }
+
+    main,
+    footer {
+        margin: 1rem 0 0 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contact-list {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+}
